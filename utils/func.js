@@ -4,7 +4,7 @@ const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 // send request function
 // ------------------------------------------------------------------------------------------------------------------------------------------------
-export const sendReq = async (URL, authInfos, methed) => {
+export const sendReq = async (URL, authInfos, method) => {
   try {
     const headers = {
       "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export const sendReq = async (URL, authInfos, methed) => {
       method: "POST",
       headers: headers,
       agent: httpsAgent,
-      body: JSON.stringify(methed),
+      body: JSON.stringify(method),
     });
 
     if (!response.ok) {

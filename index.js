@@ -3,7 +3,7 @@ import express from "express";
 import { logonService, server } from "./utils/server.js";
 
 // ------------------------------------------------------------------------------------------------------------
-// process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0"; //for testing only, not recommended for production
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0"; //for testing only, not recommended for production
 
 // ------------------------------------------------------------------------------------------------------------
 logonService();
