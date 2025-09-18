@@ -16,6 +16,7 @@ export PLC_USER_NAME=""
 export PLC_USER_PASSWD=""
 
 sudo docker run -p 5000:5000 \
+--name s7mcp \
 -e PLC_API_URL="https://192.168.2.200/api/jsonrpc" \
 -e NODE_TLS_REJECT_UNAUTHORIZED=0 \
 cadugrillo/s7-mcp-server:0.1

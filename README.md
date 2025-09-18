@@ -1,6 +1,6 @@
-# ThinkPLC-MCP
+# S7-MCP-SERVER
 
-**ThinkPLC-MCP** is a server designed to interface with **SIEMENS PLC S7-1500/1200** using their **JSON-RPC 2.0 API**. It exposes API functionalities as **MCP tools**, enabling AI assistants and other MCP-compatible clients to interact with the PLC programmatically.
+**S7-MCP-SERVER** is a server designed to interface with **SIEMENS PLC S7-1500/1200** using their **JSON-RPC 2.0 API**. It exposes API functionalities as **MCP tools**, enabling AI assistants and other MCP-compatible clients to interact with the PLC programmatically.
 
 ---
 
@@ -40,16 +40,15 @@
 
 ## ⚙️ Configuration
 
-This server uses a `config.js` file written in **ES Module** syntax.
+This server uses environment variables for configuration.
 
-### Example `config.js`:
+### Example `env variables`:
 
-```js
-export const config = {
-  URL: "https://<PLC-IP-Address>/api/jsonrpc", // required
-  userName: "your-username", // optional
-  pwr: "your-password", // optional
-};
+```bash
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+export PLC_API_URL="https://<PLC-IP-Address>/api/jsonrpc"
+export PLC_USER_NAME="your-username" // optional
+export PLC_USER_PASSWD="your-password" // optional
 ```
 
 ## 🚀 Getting Started
@@ -66,12 +65,12 @@ cd your-project-directory
 npm install
 ```
 
-3. Edit config.js as shown above.
+3. Edit env variables as shown above.
 
 4. Start the server
 
 ```bash
-node start
+node index.js
 ```
 
 ### 🖥️ Connecting with Claude Desktop
@@ -86,16 +85,10 @@ To use this MCP server with Claude AI (desktop version):
 ```json
 {
   "mcpServers": {
-    "ThinkPLC-MCP": {
+    "S7-MCP-SERVER": {
       "command": "npx",
       "args": ["mcp-remote", "http://localhost:5000/mcp"]
     }
   }
 }
-```
-
-4. Ensure @modelcontextprotocol/tools is installed:
-
-```bash
-npm install -g @modelcontextprotocol/tools
 ```
