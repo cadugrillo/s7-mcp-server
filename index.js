@@ -1,6 +1,7 @@
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
 import { logonService, server } from "./utils/server.js";
+import { config } from "./config.js";
 
 // ------------------------------------------------------------------------------------------------------------
 //process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0"; //for testing only, not recommended for production
@@ -66,7 +67,7 @@ app.delete("/mcp", async (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = config.mcpServerPort;
 app.listen(PORT, () => {
   console.log(`S7-MCP-Server running at port ${PORT}\n(connect your MCP CLient at: http://<host-ip-address>:${PORT}/mcp)`);
 });

@@ -49,6 +49,7 @@ export NODE_TLS_REJECT_UNAUTHORIZED=0
 export PLC_API_URL="https://<PLC-IP-Address>/api/jsonrpc"
 export PLC_USER_NAME="your-username" // optional
 export PLC_USER_PASSWD="your-password" // optional
+export MCP_SERVER_PORT=5000 //optional
 ```
 
 ## 🚀 Getting Started (Development)
@@ -81,13 +82,16 @@ There is a Docker Container Image avaiable at https://hub.docker.com/r/cadugrill
 
 - How to run
 ```bash
-docker run -p 5000:5000 -m 512m --memory-swap=512m \
+docker run -dp 5000:5000 -m 512m --memory-swap=512m \
 --name s7mcp \
 -e NODE_TLS_REJECT_UNAUTHORIZED=0 \
 -e PLC_API_URL="https://192.168.2.200/api/jsonrpc" \
 -e MCP_SERVER_PORT=5000 \
 cadugrillo/s7-mcp-server:0.1
 ```
+
+**Remember to change port according to your deployment.**
+
 
 - Available Environment Variables
 
@@ -107,7 +111,7 @@ To use this MCP server with Claude AI (desktop version):
 1. Find or create the claude_desktop_config.json file
    (typically in the Claude app config folder).
 
-2. Add or update the following (remember to change port according your deployment):
+2. Add or update the following (remember to change port according to your deployment):
 
 ```json
 {
