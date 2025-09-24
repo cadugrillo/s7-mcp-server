@@ -75,7 +75,7 @@ npm install
 node index.js
 ```
 
-## 🚀 Docker Container
+## 🐳 Docker Container
 
 There is a Docker Container Image avaiable at https://hub.docker.com/r/cadugrillo/s7-mcp-server/tags
 
