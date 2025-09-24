@@ -90,12 +90,12 @@ cadugrillo/s7-mcp-server:0.1
 ```
 
 - Available Environment Variables
-|:---------------------------:|:--------:|:-------------------------------------------------------:|
- NODE_TLS_REJECT_UNAUTHORIZED | required | Always to set to 0 for bypassing certificate validation
- PLC_API_URL                  | required | Your PLC IP address following the format: "https://<plc-ip-address>/api/jsonrpc"
- PLC_USER_NAME                | optional | PLC username for auto login
- PLC_USER_PASSWD              | optional | PLC password for auto login
- MCP_SERVER_PORT              | optional | If not set, it defaults to 5000
+| :---------------------------: | :--------: | :------------------------------------------------------- |
+   NODE_TLS_REJECT_UNAUTHORIZED | required   | Always to set to 0 for bypassing certificate validation
+   PLC_API_URL                  | required   | Your PLC IP address following the format: "https://<plc-ip-address>/api/jsonrpc"
+   PLC_USER_NAME                | optional   | PLC username for auto login
+   PLC_USER_PASSWD              | optional   | PLC password for auto login
+   MCP_SERVER_PORT              | optional   | If not set, it defaults to 5000
 
 
 ### 🖥️ Connecting with Claude Desktop
