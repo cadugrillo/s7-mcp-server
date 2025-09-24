@@ -51,27 +51,52 @@ export PLC_USER_NAME="your-username" // optional
 export PLC_USER_PASSWD="your-password" // optional
 ```
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Development)
 
-1. Navigate to the project folder:
+1. Git Clone https://github.com/cadugrillo/s7-mcp-server.git 
+
+2. Navigate to the project folder:
 
 ```bash
-cd your-project-directory
+cd s7-mcp-server
 ```
 
-2. Install dependencies:
+3. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Edit env variables as shown above.
+4. Edit env variables as shown above.
 
-4. Start the server
+5. Start the server
 
 ```bash
 node index.js
 ```
+
+## 🚀 Docker Container
+
+There is a Docker Container Image avaiable at https://hub.docker.com/r/cadugrillo/s7-mcp-server/tags
+
+- How to run
+```bash
+docker run -p 5000:5000 -m 512m --memory-swap=512m \
+--name s7mcp \
+-e NODE_TLS_REJECT_UNAUTHORIZED=0 \
+-e PLC_API_URL="https://192.168.2.200/api/jsonrpc" \
+-e MCP_SERVER_PORT=5000 \
+cadugrillo/s7-mcp-server:0.1
+```
+
+- Available Environment Variables
+|:---------------------------:|:--------:|:-------------------------------------------------------:|
+ NODE_TLS_REJECT_UNAUTHORIZED | required | Always to set to 0 for bypassing certificate validation
+ PLC_API_URL                  | required | Your PLC IP address following the format: "https://<plc-ip-address>/api/jsonrpc"
+ PLC_USER_NAME                | optional | PLC username for auto login
+ PLC_USER_PASSWD              | optional | PLC password for auto login
+ MCP_SERVER_PORT              | optional | If not set, it defaults to 5000
+
 
 ### 🖥️ Connecting with Claude Desktop
 
@@ -80,7 +105,7 @@ To use this MCP server with Claude AI (desktop version):
 1. Find or create the claude_desktop_config.json file
    (typically in the Claude app config folder).
 
-2. Add or update the following:
+2. Add or update the following (remember to change port according your deployment):
 
 ```json
 {
