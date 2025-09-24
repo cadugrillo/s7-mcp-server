@@ -90,6 +90,7 @@ cadugrillo/s7-mcp-server:0.1
 ```
 
 - Available Environment Variables
+
 | :---------------------------: | :--------: | :------------------------------------------------------- |
    NODE_TLS_REJECT_UNAUTHORIZED | required   | Always to set to 0 for bypassing certificate validation
    PLC_API_URL                  | required   | Your PLC IP address following the format: "https://<plc-ip-address>/api/jsonrpc"
