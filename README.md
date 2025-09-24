@@ -1,6 +1,6 @@
 # S7-MCP-SERVER
 
-**S7-MCP-SERVER** is a server designed to interface with **SIEMENS PLC S7-1500/1200** using their **JSON-RPC 2.0 API**. It exposes API functionalities as **MCP tools**, enabling AI assistants and other MCP-compatible clients to interact with the PLC programmatically.
+**S7-MCP-SERVER** is a server designed to interface with **SIEMENS PLC S7-1500/1200** using their **JSON-RPC 2.0 API**. It exposes API functionalities as **MCP tools**, enabling AI assistants and other MCP-compatible clients to interact with PLCs programmatically.
 
 ---
 
