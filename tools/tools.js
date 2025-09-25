@@ -34,12 +34,10 @@ export const logonService = () => {
         const data = await sendReq(urlWebApi, null, method);
 
         if (data?.result) {
-          console.log(
-            `Logon successfully completed for user: '${authInfos.user}'`
-          );
+          //console.log(`Logon successfully completed for user: '${authInfos.user}'`);
           authInfos.token = data.result.token;
         } else {
-          console.log("failed to Logon: ", data);
+          //console.log("failed to Logon: ", data);
         }
       } catch (err) {
         console.error("run Logon failed", err);
@@ -74,7 +72,7 @@ Possible error messages:
     password: z.string().min(1, "Password cannot be empty."),
   },
   async ({ username, password }, executionContext) => {
-    console.log(`Tool 'Api-Login' || username: ${username}`);
+    //console.log(`Tool 'Api-Login' || username: ${username}`);
     try {
       const params = {
         user: username,
@@ -92,7 +90,7 @@ Possible error messages:
         authInfos.user = username;
         authInfos.pwd = password;
         authInfos.token = data.result.token;
-        console.log("Tool 'Api-Login' || token is saved");
+        //console.log("Tool 'Api-Login' || token is saved");
       }
       return {
         content: [
@@ -132,7 +130,7 @@ server.tool(
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'api ping' || successfully completed.");
+        //console.log("Tool 'api ping' || successfully completed.");
       }
       return {
         content: [
@@ -165,10 +163,7 @@ After the successful login, the Api.GetPermissions returns a list of actions for
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log(
-          "Tool 'Api GetPermissions' || successfully completed. number: ",
-          data.result.length
-        );
+        //console.log("Tool 'Api GetPermissions' || successfully completed. number: ", data.result.length);
       }
       return {
         content: [
@@ -206,7 +201,7 @@ No authorization is required for calling the Api.Version method
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'api Version' || successfully completed.");
+        //console.log("Tool 'api Version' || successfully completed.");
       }
       return {
         content: [
@@ -243,10 +238,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log(
-          "Tool 'api browse' || successfully completed. number: ",
-          data.result.length
-        );
+        //console.log("Tool 'api browse' || successfully completed. number: ", data.result.length);
       }
       return {
         content: [
@@ -281,7 +273,7 @@ For security reasons, however, the method always returns the Boolean value "true
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'api logout' || successfully completed.");
+        //console.log("Tool 'api logout' || successfully completed.");
       }
       return {
         content: [
@@ -316,10 +308,7 @@ The Api.GetQuantityStructures method returns different structure information of 
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log(
-          "Tool 'Api GetQuantityStructures' || successfully completed. number: ",
-          data.result.length
-        );
+        //console.log("Tool 'Api GetQuantityStructures' || successfully completed. number: ", data.result.length);
       }
       return {
         content: [
@@ -371,7 +360,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'Api-ChangePassword' || successfully completed. ");
+        //console.log("Tool 'Api-ChangePassword' || successfully completed. ");
       }
       return {
         content: [
@@ -413,10 +402,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log(
-          "Tool 'Api GetPasswordPolicy' || successfully completed. number: ",
-          data.result.length
-        );
+        //console.log("Tool 'Api GetPasswordPolicy' || successfully completed. number: ", data.result.length);
       }
       return {
         content: [
@@ -477,10 +463,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log(
-          "Tool 'browse-Plc-Program' ||  Number of items: ",
-          data.result.length
-        );
+        //console.log("Tool 'browse-Plc-Program' ||  Number of items: ", data.result.length);
       }
       return {
         content: [
@@ -541,10 +524,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log(
-          "Tool 'browse-Plc-Program' ||  Number of items: ",
-          data.result.length
-        );
+        //console.log("Tool 'browse-Plc-Program' ||  Number of items: ", data.result.length);
       }
       return {
         content: [
@@ -598,7 +578,7 @@ To call the PlcProgram.Read method, you need the "read_value" authorization.
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log("Tool 'PlcProgram-Read' || successfully completed.");
+        //console.log("Tool 'PlcProgram-Read' || successfully completed.");
       }
       return {
         content: [
@@ -650,7 +630,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log("Tool 'PlcProgram-Write' || successfully completed.");
+        //console.log("Tool 'PlcProgram-Write' || successfully completed.");
       }
       return {
         content: [
@@ -704,7 +684,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log("Tool 'PlcProgram-Write' || successfully completed.");
+        //console.log("Tool 'PlcProgram-Write' || successfully completed.");
       }
       return {
         content: [
@@ -758,7 +738,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log("Tool 'PlcProgram-Write' || successfully completed.");
+        //console.log("Tool 'PlcProgram-Write' || successfully completed.");
       }
       return {
         content: [
@@ -796,7 +776,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'Plc ReadOperatingMode' || successfully completed. ");
+        //console.log("Tool 'Plc ReadOperatingMode' || successfully completed. ");
       }
       return {
         content: [
@@ -843,9 +823,7 @@ Possible error messages
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log(
-          "Tool 'Plc-RequestChangeOperatingMode' || successfully completed."
-        );
+        //console.log("Tool 'Plc-RequestChangeOperatingMode' || successfully completed.");
       }
       return {
         content: [
@@ -881,7 +859,7 @@ time corresponds to Coordinated Universal Time (UCT).`,
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'Plc ReadSystemTime' || successfully completed. ");
+        //console.log("Tool 'Plc ReadSystemTime' || successfully completed. ");
       }
       return {
         content: [
@@ -934,7 +912,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log("Tool 'Plc SetSystemTime' || successfully completed.");
+        //console.log("Tool 'Plc SetSystemTime' || successfully completed.");
       }
       return {
         content: [
@@ -974,7 +952,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (data?.result) {
-        console.log("Tool 'Project ReadLanguages' || successfully completed. ");
+        //console.log("Tool 'Project ReadLanguages' || successfully completed. ");
       }
       return {
         content: [
@@ -1033,7 +1011,7 @@ Possible error messages:
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log("Tool 'Alarms Browse' || successfully completed.");
+        //console.log("Tool 'Alarms Browse' || successfully completed.");
       }
       return {
         content: [
@@ -1078,7 +1056,7 @@ Possible error messages:
       const data = await sendReq(urlWebApi, authInfos, method);
 
       if (!data?.error) {
-        console.log("Tool 'Alarms Acknowledge' || successfully completed.");
+        //console.log("Tool 'Alarms Acknowledge' || successfully completed.");
       }
       return {
         content: [
@@ -1131,9 +1109,7 @@ Possible error messages
       };
       const data = await sendReq(urlWebApi, authInfos, method);
       if (!data?.error) {
-        console.log(
-          "Tool 'DiagnosticBuffer Browse' || successfully completed."
-        );
+        //console.log("Tool 'DiagnosticBuffer Browse' || successfully completed.");
       }
       return {
         content: [

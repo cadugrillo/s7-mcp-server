@@ -18,7 +18,7 @@ if (config.transport == "streamable-http") {
   app.use(express.json());
 
   app.post("/mcp", async (req, res) => {
-    console.log("Received POST MCP request: ", req.body);
+    //console.log("Received POST MCP request: ", req.body);
     try {
       const transport = new StreamableHTTPServerTransport({
         sessionIdGenerator: undefined,
@@ -44,7 +44,7 @@ if (config.transport == "streamable-http") {
   });
 
   app.get("/mcp", async (req, res) => {
-    console.log("Received GET MCP request");
+    //console.log("Received GET MCP request");
     res.writeHead(405).end(
       JSON.stringify({
         jsonrpc: "2.0",
@@ -58,7 +58,7 @@ if (config.transport == "streamable-http") {
   });
 
   app.delete("/mcp", async (req, res) => {
-    console.log("Received DELETE MCP request");
+    //console.log("Received DELETE MCP request");
     res.writeHead(405).end(
       JSON.stringify({
         jsonrpc: "2.0",
@@ -74,7 +74,7 @@ if (config.transport == "streamable-http") {
   // Start the server
   const PORT = config.mcpServerPort;
   app.listen(PORT, () => {
-    console.log(`S7-MCP-Server running at port ${PORT}\n(connect your MCP CLient at: http://<host-ip-address>:${PORT}/mcp)`);
+    //console.log(`S7-MCP-Server running at port ${PORT}\n(connect your MCP CLient at: http://<host-ip-address>:${PORT}/mcp)`);
   });
 
 } else {
