@@ -81,5 +81,5 @@ if (config.transport == "streamable-http") {
   // Use Stdio Transport
   const transport = new StdioServerTransport()
   await server.connect(transport);
-  console.log(`S7 MCP Server running at stdio. Use transport 'stdio' in your MCP Client and command 'node' with arguments 'PATH/TO/s7-mcp-server/index.js'.`);
+  //console.log(`S7 MCP Server running at stdio. Use transport 'stdio' in your MCP Client and command 'node' with arguments 'PATH/TO/s7-mcp-server/index.js'.`);
 }
