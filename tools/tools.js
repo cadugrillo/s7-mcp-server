@@ -1,4 +1,3 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 // ----------------------------------------------------------------------------------------------------------
 import {
@@ -7,9 +6,10 @@ import {
   objectOperatingModeType,
   AlarmsBrowseFiltersRequestType,
   DiagnosticBufferBrowseFiltersRequestType,
-} from "./enum.js";
-import { config } from "../config.js";
-import { sendReq } from "./func.js";
+} from "../utils/enum.js";
+import { config } from "../utils/config.js";
+import { sendReq } from "../utils/func.js";
+import { server } from "../utils/mcp_server.js";
 //......................................
 const urlWebApi = config.URL;
 const user = config.userName;
@@ -49,18 +49,9 @@ export const logonService = () => {
     setInterval(runLogon, 600000);
   }
 };
-// ------------------------------------------------------------------------------------------------------------
-export const server = new McpServer({
-  name: "WinCC Unified Core XT",
-  version: "1.0.0",
-  capabilities: {
-    resources: {},
-    tools: {},
-  },
-});
 
 // ------------------------------------------------------------------------------------------------------------
-// Tools to log in plc
+// Tool to log in plc
 // ------------------------------------------------------------------------------------------------------------
 
 server.tool(
@@ -101,7 +92,7 @@ Possible error messages:
         authInfos.user = username;
         authInfos.pwd = password;
         authInfos.token = data.result.token;
-        console.log("Tool 'Api-Login' || token is seved");
+        console.log("Tool 'Api-Login' || token is saved");
       }
       return {
         content: [

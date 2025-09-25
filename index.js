@@ -1,7 +1,8 @@
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
-import { logonService, server } from "./utils/server.js";
-import { config } from "./config.js";
+import { logonService } from "./tools/tools.js";
+import { server } from "./utils/mcp_server.js";
+import { config } from "./utils/config.js";
 
 // ------------------------------------------------------------------------------------------------------------
 //process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0"; //for testing only, not recommended for production
