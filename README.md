@@ -2,16 +2,14 @@
   <img title="s7-mcp-server" src='https://raw.githubusercontent.com/cadugrillo/s7-mcp-server/main/logo_horizontal.png' width="277" height="110"/>
 </p>
 
-# S7-MCP-SERVER
+# S7 MCP SERVER
 
-**S7-MCP-SERVER** is a server designed to interface with **SIEMENS PLC S7-1500/1200** using their **JSON-RPC 2.0 API**. It exposes API functionalities as **MCP tools**, enabling AI assistants and other MCP-compatible clients to interact with PLCs programmatically.
+**S7 MCP SERVER** is a MCP Server that connects AI agents to Siemens industrial PLCs (specifically S7-1500 and S7-1200 models). This allows AI agents to automatically monitor and control industrial equipment by sending commands and receiving data from the machines.
 
 ---
 
-## 🔧 Features
+## 🔧 Available Tools
 
-- Connects to a **SIEMENS PLC API (Webserver)** endpoint
-- Provides MCP tools for:
   - ✅ User authentication (`login`, `logout`, `ChangePassword-user`)
   - ✅ Check PLC connectivity (`ping`)
   - ✅ Retrieve user permissions via `Api-GetPermissions` after login
@@ -30,7 +28,7 @@
   - ✅ Browse active alarms (`Alarms-Browse`)
   - ✅ Acknowledge alarms (`Alarms-Acknowledge`)
   - ✅ Browse diagnostic buffer entries (`DiagnosticBuffer-Browse`)
-- 🔄 Optional: automatic service account login with token refresh
+  - 🔄 Optional: automatic service account login with token refresh
 
 ---
 
@@ -58,7 +56,7 @@ export MCP_SERVER_PORT=5000 //optional
 
 ## 🚀 Getting Started (Development)
 
-1. Git Clone https://github.com/cadugrillo/s7-mcp-server.git 
+1. Git Clone this repo: https://github.com/cadugrillo/s7-mcp-server.git 
 
 2. Navigate to the project folder:
 
@@ -91,7 +89,7 @@ docker run -dp 5000:5000 -m 512m --memory-swap=512m \
 -e NODE_TLS_REJECT_UNAUTHORIZED=0 \
 -e PLC_API_URL="https://192.168.2.200/api/jsonrpc" \
 -e MCP_SERVER_PORT=5000 \
-cadugrillo/s7-mcp-server:0.1
+cadugrillo/s7-mcp-server:latest
 ```
 
 **Remember to change port according to your deployment.**
