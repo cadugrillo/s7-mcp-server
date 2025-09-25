@@ -1,5 +1,5 @@
 <p align="left">
-  <img title="s7-mcp-server" src='https://raw.githubusercontent.com/cadugrillo/s7-mcp-server/main/logo.png' width="300" height="300"/>
+  <img title="s7-mcp-server" src='https://raw.githubusercontent.com/cadugrillo/s7-mcp-server/main/logo_horizontal.png' width="277" height="110"/>
 </p>
 
 # S7-MCP-SERVER
