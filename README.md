@@ -113,7 +113,7 @@ To use this MCP server with Claude AI (desktop version):
 1. Find or create the claude_desktop_config.json file
    (typically in the Claude app config folder).
 
-2. Add or update the following (remember to change port according to your deployment):
+2. Add or update the following if running in a container (streamable-http) (remember to change port according to your deployment):
 
 ```json
 {
@@ -121,6 +121,24 @@ To use this MCP server with Claude AI (desktop version):
     "S7-MCP-SERVER": {
       "command": "npx",
       "args": ["mcp-remote", "http://localhost:5000/mcp"]
+    }
+  }
+}
+```
+
+3. Or use the following if running locally (stdio):
+
+```json
+{
+  "mcpServers": {
+    "S7-MCP-SERVER": {
+      "command": "node",
+      "args": ["path/to/your/s7McpServer.js"], //on Windows user proper escape (eg. C:\\path\\to\\your\\s7McpServer.js)
+      "env": {
+        "PLC_API_URL": "https://your-plc-ip-address/api/jsonrpc",
+        "TRANSPORT": "stdio",
+        "NODE_TLS_REJECT_UNAUTHORIZED": 0
+      }
     }
   }
 }
