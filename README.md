@@ -75,7 +75,7 @@ npm install
 5. Start the server
 
 ```bash
-node index.js
+npm run dev
 ```
 
 ## 🐳 Docker Container
@@ -133,7 +133,7 @@ To use this MCP server with Claude AI (desktop version):
   "mcpServers": {
     "S7-MCP-SERVER": {
       "command": "node",
-      "args": ["path/to/your/s7McpServer.js"], //on Windows user proper escape (eg. C:\\path\\to\\your\\s7McpServer.js)
+      "args": ["path/to/your/s7McpServer.ts"], //on Windows user proper escape (eg. C:\\path\\to\\your\\s7McpServer.ts)
       "env": {
         "PLC_API_URL": "https://your-plc-ip-address/api/jsonrpc",
         "TRANSPORT": "stdio",

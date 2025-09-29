@@ -1,2 +1,4 @@
-
+dist/
+bundle/
 node_modules/
+.vscode/

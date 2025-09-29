@@ -1,20 +1,22 @@
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
-import express from "express";
-import { logonService } from "./tools/tools.js";
+import express, { type Express } from "express";
+import { autoLoginService } from "./tools/credentials/credentials.js";
+import { basicFunctions } from "./tools/basic_functions/basicFunctions.js";
+import { processData } from "./tools/process_data/processData.js";
+import { diagnostics } from "./tools/diagnostics/diagnostics.js";
 import { server } from "./utils/mcp_server.js";
 import { config } from "./utils/config.js";
 
 // ------------------------------------------------------------------------------------------------------------
 //process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0"; //for testing only, not recommended for production
-
 // ------------------------------------------------------------------------------------------------------------
-logonService();
+autoLoginService();
 // ------------------------------------------------------------------------------------------------------------
 
 if (config.transport !== "stdio") {
 
-  const app = express();
+  const app: Express = express();
   app.use(express.json());
 
   app.post("/mcp", async (req, res) => {

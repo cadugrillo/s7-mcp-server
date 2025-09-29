@@ -1,11 +1,14 @@
 {
-  "name": "thikplc-mcp",
+  "name": "s7-mcp-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/s7McpServer.js",
+  "types": "dist/s7McpServer.d.ts",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node dist/s7McpServer.js",
+    "dev": "node src/s7McpServer.ts",
+    "build": "tsc",
+    "bundle": "ncc build src/s7McpServer.ts -o bundle"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +20,12 @@
     "mcp-remote": "^0.1.16",
     "nodemon": "^3.1.10",
     "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.6.0",
+    "esbuild": "^0.25.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   }
 }
