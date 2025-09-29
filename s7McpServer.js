@@ -12,7 +12,7 @@ import { config } from "./utils/config.js";
 logonService();
 // ------------------------------------------------------------------------------------------------------------
 
-if (config.transport == "streamable-http") {
+if (config.transport !== "stdio") {
 
   const app = express();
   app.use(express.json());
