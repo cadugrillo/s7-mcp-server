@@ -38,4 +38,4 @@ docker run -dp 5000:5000 -m 512m --memory-swap=512m `
 --name s7mcp `
 -e PLC_API_URL="https://192.168.2.200/api/jsonrpc" `
 -e NODE_TLS_REJECT_UNAUTHORIZED=0 `
-cadugrillo/s7-mcp-server:0.3
+cadugrillo/s7-mcp-server:latest
