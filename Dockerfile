@@ -14,7 +14,5 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-EXPOSE 5000
-
 # Define the command to run your application
 CMD [ "node", "s7McpServer.js" ]
