@@ -137,7 +137,7 @@ To use this MCP server with Claude AI (desktop version):
       "env": {
         "PLC_API_URL": "https://your-plc-ip-address/api/jsonrpc",
         "TRANSPORT": "stdio",
-        "NODE_TLS_REJECT_UNAUTHORIZED": 0
+        "NODE_TLS_REJECT_UNAUTHORIZED": "0"
       }
     }
   }
