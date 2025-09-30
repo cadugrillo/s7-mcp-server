@@ -28,11 +28,59 @@ interface Params {
 server.tool(
   "Alarms-Browse",
   `
-With this method you can determine which alarms are currently active on the CPU, and when
-the last change occurred within the diagnostics buffer.
+With this method you can determine which alarms are currently active on the CPU, and when the last change occurred within the diagnostics buffer.
 To call the Alarms.Browse method, you need the "read_diagnostics" permission.
 
+Structure of the request
 
+The following table provides information about the individual parameters of the request.
+
+Table: Alarms_Browse_Request (object)
+
+| Name | Required | Data type | Description |
+|------|----------|-----------|-------------|
+| language | Yes | string | The desired language in which the text is returned in RFC 4647 format, e.g. "en-US" |
+| count | No | number | The maximum number of alarm entries that are returned.<br><br>The default value is 50. If you want to determine the current status of the diagnostics buffer, enter 0 as "count". |
+| alarm_id | No | string | The alarm ID of the CPU for which you are requesting data. If the Alarm ID is included, only the "count" parameter can be offered as a filter. |
+| filters | No | object of type Alarms_Browse_<br><br>Filters_Request | Optional object containing parameters for filtering the response |
+
+Table: Alarms_Browse_Filters_Request (object)
+
+| Name | Required | Data type | Description |
+|------|----------|-----------|-------------|
+| mode | Yes | string | The mode that determines whether attributes are to be included or excluded in the response.<br><br>The following modes are available:<br><br>• include<br>• exclude |
+| filters.attributes | Yes | array of strings | Possible array entries are:<br><br>• "alarm_text"<br>• "info_text"<br>• "status"<br>• "timestamp"<br>• "acknowledgement"<br>• "alarm_number"<br>• "producer" |
+
+Examples:
+
+The following example shows a request for reading a single alarm with all alarm areas in the English language:
+
+{
+"language": "en-US",
+"alarm_id": "1231231231"
+}
+The following example shows the request for reading a single alarm without the alarm areas excluded under "exclude":
+
+{
+"language": "en-US",
+"alarm_id": "1231231231",
+"filters":
+{
+"mode": "exclude",
+"attributes": ["alarm_text", "info_text"],
+}
+}
+The following example shows the request for reading 50 alarms with the alarm ranges included in "include".
+
+{
+"language": "en-US",
+"count": 50,
+"filters":
+{
+"mode": "include",
+"attributes": ["status", "acknowledgement"]
+}
+}
 
 Possible error messages:
 2   Permission denied  || The current authentication token is not authorized to call this method. Log on with a user account that has sufficient privileges to call this method.
@@ -158,6 +206,41 @@ server.tool(
   `
 With this method you read out entries from the diagnostics buffer of the CPU.
 To call the DiagnosticBuffer.Browse method, you need the "read_diagnostics" permission.
+
+Structure of the request:
+
+The following table provides information about the individual parameters of the request.
+
+Table: DiagnosticBuffer_Browse_Request (object)
+
+| Name | Required | Data type | Description |
+|------|----------|-----------|-------------|
+| language | Yes | string | The desired language in which the text is returned in RFC 4647 format, e.g. "en-US" |
+| count | No | number | The maximum number of alarm entries that are returned.<br><br>The default value is 50. If you want to determine the current status of the diagnostics buffer, enter 0 as "count". |
+| filters | No | object of type DiagnosticBuffer_options.<br><br>Browse_Filters_<br><br>Request | The object that represents the different filtering |
+
+Table: DiagnosticBuffer_Browse_Filters_Request (object)
+
+| Name | Required | Data type | Description |
+|------|----------|-----------|-------------|
+| attributes | Yes | array of strings | The following attributes are possible for the diagnostics buffer entries:<br><br>• short_text<br>• long_text<br>• help_text |
+| mode | Yes | string | The mode that determines whether attributes are to be included or excluded in the request.<br><br>The following modes are available:<br><br>• include<br>• exclude |
+
+
+Example:
+
+The following example shows a request of the diagnostic entries as LCID value 1033 (dec value), which stands for "English United States".
+
+{
+"language": "en-US",
+"count": 50,
+"entries":
+{
+"mode": "include",
+"attributes": ["short_text", "long_text", "help_text"]
+}
+}
+
 Possible error messages
 2 Permission denied || The current authentication token is not authorized to call this method. Log on with a user account that has sufficient privileges to call this method
 `,
@@ -167,7 +250,7 @@ Possible error messages
     count: z.number().optional(),
     filters: DiagnosticBufferBrowseFiltersRequestType.optional().default({
       mode: "include",
-      attributes: [],
+      attributes: ["short_text", "long_text", "help_text"],
     }),
   },
   async ({ language, count, filters }, executionContext) => {
