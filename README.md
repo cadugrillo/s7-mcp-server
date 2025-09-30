@@ -10,25 +10,25 @@
 
 ## 🔧 Available Tools
 
-  - ✅ User authentication (`login`, `logout`, `ChangePassword-user`)
-  - ✅ Check PLC connectivity (`ping`)
-  - ✅ Retrieve user permissions via `Api-GetPermissions` after login
-  - ✅ Get API version with `Api-Version`
-  - ✅ List available API methods using `Api-Browse`
-  - ✅ Retrieve structure information with `Api-GetQuantityStructures`
-  - ✅ Get password security policies with `Api-GetPasswordPolicy`
-  - ✅ Browse tags and metadata using `PlcProgram-Browse`
-  - ✅ Read single variables via `PlcProgram-Read`
-  - ✅ Write Boolean, Number, or String tags with `PlcProgram-Write-*`
-  - ✅ Read the current CPU operating mode with `Plc-ReadOperatingMode`
-  - ✅ Request a change of operating mode using `Plc-RequestChangeOperatingMode`
-  - ✅ Read the CPU system time (`Plc-ReadSystemTime`)
-  - ✅ Set the CPU system time (`Plc-SetSystemTime`)
-  - ✅ Read available project languages (`Project-ReadLanguages`)
-  - ✅ Browse active alarms (`Alarms-Browse`)
-  - ✅ Acknowledge alarms (`Alarms-Acknowledge`)
-  - ✅ Browse diagnostic buffer entries (`DiagnosticBuffer-Browse`)
-  - 🔄 Optional: automatic service account login with token refresh
+  - User authentication (`login`, `logout`, `ChangePassword-user`)
+  - Check PLC connectivity (`ping`)
+  - Retrieve user permissions (`Api-GetPermissions`)
+  - Get API version (`Api-Version`)
+  - List available API methods (`Api-Browse`)
+  - Retrieve structure information (`Api-GetQuantityStructures`)
+  - Get password security policies (`Api-GetPasswordPolicy`)
+  - Browse tags and metadata (`PlcProgram-Browse`)
+  - Read single variables (`PlcProgram-Read`)
+  - Write Boolean, Number, or String tags (`PlcProgram-Write`)
+  - Read the current CPU operating mode (`Plc-ReadOperatingMode`)
+  - Request a change of operating mode (`Plc-RequestChangeOperatingMode`)
+  - Read the CPU system time (`Plc-ReadSystemTime`)
+  - Set the CPU system time (`Plc-SetSystemTime`)
+  - Read available project languages (`Project-ReadLanguages`)
+  - Browse active alarms (`Alarms-Browse`)
+  - Acknowledge alarms (`Alarms-Acknowledge`)
+  - Browse diagnostic buffer entries (`DiagnosticBuffer-Browse`)
+  - Optional: automatic service account login with token refresh
 
 ---
 
@@ -133,7 +133,7 @@ To use this MCP server with Claude AI (desktop version):
   "mcpServers": {
     "S7-MCP-SERVER": {
       "command": "node",
-      "args": ["path/to/your/s7McpServer.js"], //on Windows user proper escape (eg. C:\\path\\to\\your\\s7McpServer.js)
+      "args": ["path/to/your/s7McpServer.js"], //`for Windows user proper escape (eg. C:\\path\\to\\your\\s7McpServer.js)`
       "env": {
         "PLC_API_URL": "https://your-plc-ip-address/api/jsonrpc",
         "TRANSPORT": "stdio",
@@ -143,3 +143,7 @@ To use this MCP server with Claude AI (desktop version):
   }
 }
 ```
+
+### 🪲 Reporting bugs and contributing
+
+- Want to report a bug or request a feature? Please open an [issue](https://github.com/cadugrillo/s7-mcp-server/issues/new)
