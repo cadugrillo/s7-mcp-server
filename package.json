@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node dist/s7McpServer.js",
+    "start-bundle": "node bundle/index.js",
     "dev": "node src/s7McpServer.ts",
     "build": "tsc",
     "bundle": "ncc build src/s7McpServer.ts -o bundle"
