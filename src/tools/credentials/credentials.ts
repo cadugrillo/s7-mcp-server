@@ -9,6 +9,7 @@ const urlWebApi = config.URL;
 const user = config.userName;
 const pwd = config.pwd;
 export let authInfos = { user: user, pwd: pwd, token: null };
+let loginIntervalId: NodeJS.Timeout | null = null;
 // ------------------------------------------------------------------------------------------------------------
 // AutoLogin Service (When user and pwr are set, it will try to logon and renew the token every 10 minutes)
 // ------------------------------------------------------------------------------------------------------------
@@ -40,7 +41,35 @@ export const autoLoginService = () => {
       }
     };
     runLogon();
-    setInterval(runLogon, 60000); // renew token every 10 minutes
+    loginIntervalId = setInterval(runLogon, 600000); // renew token every 10 minutes
+  }
+};
+// ------------------------------------------------------------------------------------------------------------
+// Stop AutoLogin Service
+// ------------------------------------------------------------------------------------------------------------
+export const stopAutoLoginService = () => {
+  if (loginIntervalId) {
+    clearInterval(loginIntervalId);
+    loginIntervalId = null;
+  }
+};
+// ------------------------------------------------------------------------------------------------------------
+// Perform Logout (for graceful shutdown)
+// ------------------------------------------------------------------------------------------------------------
+export const performLogout = async () => {
+  if (!authInfos.token) return;
+
+  try {
+    const method = {
+      id: 45,
+      jsonrpc: "2.0",
+      method: "Api.Logout",
+    };
+    await sendReq(urlWebApi, authInfos, method);
+    authInfos.token = null;
+    console.log("Logged out successfully");
+  } catch (err) {
+    console.error("Logout failed during shutdown:", err);
   }
 };
 // ------------------------------------------------------------------------------------------------------------
