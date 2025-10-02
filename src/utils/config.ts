@@ -10,7 +10,7 @@ interface Config {
 
 const urlCheck = () => {
 
-	const pathToConfig = '/home/edge/s7-mcp-server/configs/config.json';
+	const pathToConfig = '/configs/config.json';
 	if (fs.existsSync(pathToConfig)) {
 		fs.readFile(pathToConfig, 'utf8', (err, data) => {
 			if (err) {
