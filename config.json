@@ -1,0 +1,3 @@
+{
+   "plcApiUrl": "https://your-plc-ip-address/api/jsonrpc"
+}
