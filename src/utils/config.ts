@@ -10,7 +10,7 @@ interface Config {
 
 const urlCheck = () => {
 
-	const pathToConfig = '/configs/config.json';
+	const pathToConfig = '/cfg-data/config.json';
 	if (fs.existsSync(pathToConfig)) {
 		fs.readFile(pathToConfig, 'utf8', (err, data) => {
 			if (err) {
