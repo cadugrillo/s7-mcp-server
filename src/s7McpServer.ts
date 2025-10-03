@@ -6,7 +6,7 @@ import { autoLoginService, stopAutoLoginService, performLogout } from "./tools/c
 import { basicFunctions } from "./tools/basic_functions/basicFunctions.js";
 import { processData } from "./tools/process_data/processData.js";
 import { diagnostics } from "./tools/diagnostics/diagnostics.js";
-import { server } from "./utils/mcp_server.js";
+import { server, html_readme } from "./utils/mcp_server.js";
 import { config } from "./utils/config.js";
 
 // ------------------------------------------------------------------------------------------------------------
@@ -55,6 +55,11 @@ if (config.transport !== "stdio") {
 
   const app: Express = express();
   app.use(express.json());
+
+  app.get("/", (req, res) => {
+    console.log("Received GET MCP request at /. Sending README HTML.");
+    res.send(html_readme);
+  });
 
   app.post("/mcp", async (req, res) => {
     console.log("Received POST MCP request: ", req.body);
