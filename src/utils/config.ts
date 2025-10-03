@@ -8,25 +8,25 @@ interface Config {
 	transport: string;
 }
 
-const urlCheck = () => {
-
+const urlCheck = (): string => {
 	const pathToConfig = '/cfg-data/config.json';
 	if (fs.existsSync(pathToConfig)) {
-		fs.readFile(pathToConfig, 'utf8', (err, data) => {
-			if (err) {
-				console.error('Error reading JSON file:', err);
-				return process.env["PLC_API_URL"];
-			}
+		try {
+			const data = fs.readFileSync(pathToConfig, 'utf8');
 			const config = JSON.parse(data);
-			return config.plcApiUrl || process.env["PLC_API_URL"];
-		});
+			return config.plcApiUrl || "";
+		} catch (err) {
+			console.error('Error reading JSON file:', err);
+			return process.env["PLC_API_URL"] || "";
+		}
+	} else {
+		console.error("Config file not found. Using environment variable.");
+		return process.env["PLC_API_URL"] || "";
 	}
-
-	return process.env["PLC_API_URL"];
 }
 
 export const config: Config = {
-	URL: urlCheck() || "",
+	URL: urlCheck(),
 	userName: process.env["PLC_USER_NAME"] || "",
 	pwd: process.env["PLC_USER_PASSWD"] || "",
 	mcpServerPort: process.env["MCP_SERVER_PORT"] || 5000,
